@@ -1,0 +1,142 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.menu {
+    width: 100%;
+    height: 60px;
+    background-color: rgb(20, 20, 20);
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 30%;
+    height: 100%;
+    line-height: 60px;
+    color: white;
+    text-align: center;
+}
+
+nav {
+    width: 70%;
+    height: 100%;
+    line-height: 60px;
+    margin-top: 0px;
+}
+
+nav ul{
+    width: 90%;
+    list-style-type: none;
+    float: right;
+    margin-right: 10px;
+}
+
+nav li {
+    font-weight: 400;
+    font-size: 15px;
+    padding: 0 30px;
+    /*Lista vai ficar uma do lado da outra*/
+    display: inline-block;
+    /*Texto ficar todo maisuculo*/
+    text-transform: uppercase;
+    color: #ff8000;
+    cursor: pointer;
+}
+
+nav a {
+    color: #ff8000;
+    text-decoration: none;
+    
+}
+
+nav a:hover, .container a:hover {
+    color: #ff8000;
+    text-decoration: none;
+}
+
+.container a {
+    color: black;
+}
+
+i {
+    font-size: 15pt;
+    color: #ff8000;
+}
+
+/*=================================================================================*/
+/*================================ Clientes =======================================*/
+
+.containner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    width: 70%;
+}
+
+.w33 {
+    width: 33%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.marge {
+    margin-right: 10px;
+}
+
+.flex {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+hr {
+    border: solid black 1px;
+}
+
+div.flex input#buscar {
+    margin-top: 10px;
+}
+
+.drop {
+    background-color: rgb(41, 39, 39);
+    z-index: 100;
+    position: absolute;
+    color:black;
+    line-height: 2;
+    width: 250px; 
+    display: none;   
+    padding-left: 10px;
+}
+
+.drop a {
+    text-transform: capitalize;    
+}
+
+p {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+}
