@@ -1,6 +1,5 @@
 <?php
-require "views/cabecalho.php";
-require "models/clientes.php";
+
 $acao = 0;
 
 if (isset($_POST['acao']) && !empty($_POST['acao'])) {

@@ -19,7 +19,7 @@ function alterarTrasicao(id) {
         success:function(html) {
             //Altera pelo o html que foi recebido
             $('#modal').find('.modal-body').html(html);
-            $(".modal-title").html("Adicionar processo");
+            $(".modal-title").html("Alterar dados");
             // $('#modal')-> Seleciona o modal
             // find('.modal-body') -> Seleciona o modal-body
             // find('form') -> Vai procurar pelo formulario
@@ -39,6 +39,8 @@ function salvarT(e) {
     var pagamento = $(this).find('select[name=pagamento]').val();
     var obs = $(this).find('textarea[name=obs]').val();
     var id = $(this).find('input[name=id]').val();
+    var rpv = $(this).find('input[name=data_rpv]').val();
+    var pericia = $(this).find('input[name=data_pericia]').val();
     
     $.ajax({
         // Vai requisitar
@@ -46,7 +48,7 @@ function salvarT(e) {
         // Pelo Post
         type:'POST',
         // Vai enviar os seguintes dados para o savar.php
-        data:{situacao:situacao, pagamento:pagamento, id:id, obs:obs},
+        data:{situacao:situacao, pagamento:pagamento, id:id, obs:obs, rpv:rpv, pericia:pericia},
         success:function(html){
             $('#modal').find('.modal-body').html(html);
             alert("Dados alterado com sucesso!");          
@@ -76,7 +78,7 @@ function apagarProcesso(id) {
         success:function(html) {
             //Altera pelo o html que foi recebido
             $('#modal').find('.modal-body').html(html);
-            $(".modal-title").html("Adicionar processo");
+            $(".modal-title").html("Excluir processo");
             // $('#modal')-> Seleciona o modal
             // find('.modal-body') -> Seleciona o modal-body
             // find('form') -> Vai procurar pelo formulario
@@ -154,6 +156,7 @@ function salvar(e) {
     var tipo = $(this).find('select[name=tipo]').val();
     var id = $(this).find('input[name=id]').val();
     var datai = $(this).find('input[name=datai]').val();
+    var acompanhante = $(this).find('input[name=nomeacompanhante]').val();
     
     $.ajax({
         // Vai requisitar
@@ -161,7 +164,7 @@ function salvar(e) {
         // Pelo Post
         type:'get',
         // Vai enviar os seguintes dados para o savar.php
-        data:{nome:nome, cpf:cpf, tipo:tipo, id:id, datai},
+        data:{nome:nome, cpf:cpf, tipo:tipo, id:id, datai, acompanhante:acompanhante},
         success:function(){
             if (tipo == "") {
                 alert("Erro! O campo tipo do processo é obrigatório!");
@@ -196,7 +199,7 @@ function consultarProcesso(id) {
         success:function(html) {
             //Altera pelo o html que foi recebido
             $('#modal').find('.modal-body').html(html);
-            $(".modal-title").html("Adicionar processo");
+            $(".modal-title").html("Consulta");
             // $('#modal')-> Seleciona o modal
             // find('.modal-body') -> Seleciona o modal-body
             // find('form') -> Vai procurar pelo formulario
@@ -208,3 +211,41 @@ function consultarProcesso(id) {
     });
 
 }
+
+// Parte de eventos
+
+$('#radio1').click(function() {
+    var estado = $(this).val();
+    
+    $("#confirmacao").show();
+});
+
+$('#radio2').click(function() {
+    var estado = $(this).val();
+    
+    $("#confirmacao").hide();
+});
+
+$('#pericia1').click(function() {
+    var estado = $(this).val();
+    
+    $("#data_pericia").show();
+});
+
+$('#pericia2').click(function() {
+    var estado = $(this).val();
+    
+    $("#data_pericia").hide();
+});
+
+$('#rpv1').click(function() {
+    var estado = $(this).val();
+    
+    $("#data_rpv").show();
+});
+
+$('#rpv2').click(function() {
+    var estado = $(this).val();
+    
+    $("#data_rpv").hide();
+});

@@ -66,7 +66,7 @@ function editar(id) {
         success:function(html) {
             //Altera pelo o html que foi recebido
             $('#modal').find('.modal-body').html(html);
-            $(".modal-title").html("Adicionar processo");
+            $(".modal-title").html("Editar dados");
             // $('#modal')-> Seleciona o modal
             // find('.modal-body') -> Seleciona o modal-body
             // find('form') -> Vai procurar pelo formulario
@@ -139,7 +139,7 @@ function excluir(id) {
         success:function(html) {
             //Altera pelo o html que foi recebido
             $('#modal').find('.modal-body').html(html);
-            $(".modal-title").html("Adicionar processo");
+            $(".modal-title").html("Excluir Cliente");
             // $('#modal')-> Seleciona o modal
             // find('.modal-body') -> Seleciona o modal-body
             // find('form') -> Vai procurar pelo formulario

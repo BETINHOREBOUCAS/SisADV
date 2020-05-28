@@ -20,6 +20,10 @@ class processosController extends controller {
         require "views/alterarTransicao.php";
     }
 
+    public function apagarTransicao() {
+        require "views/apagarTransicao.php";
+    }
+
     public function consultarProcesso() {
         require "views/consultarProcesso.php";
     }

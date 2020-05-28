@@ -1,12 +1,12 @@
 <?php
-require "views/cabecalho.php";
-require "models/clientes.php";
+
 
 $id = $_POST['id'];
 
 $cliente = new Clientes();
 $dados = $cliente->buscarCliente($id);
-
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 ?>
 
 <div class="containner">

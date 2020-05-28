@@ -2,19 +2,21 @@
 class Processos extends model
 {
 
-    public function salvar($id, $tipo, $datai = "")
+    public function salvar($id, $tipo, $datai = "", $acompanhante = "")
     {
         
         if (!isset($datai) || empty($datai)) {
-            $sql = $this->db->prepare("INSERT into processos(tipo, situacao, data_i, id_cliente)value(:tipo, 'andamento', now(), :id)");
+            $sql = $this->db->prepare("INSERT into processos(tipo, situacao, data_i, id_cliente, acompanhante)value(:tipo, 'andamento', now(), :id, :acompanhante)");
             $sql->bindValue(":tipo", $tipo);
             $sql->bindValue(":id", $id);
+            $sql->bindValue(":acompanhante", $acompanhante);
             $sql->execute();
         }else {
-            $sql = $this->db->prepare("INSERT into processos(tipo, situacao, data_i, id_cliente)value(:tipo, 'andamento', :datai, :id)");
+            $sql = $this->db->prepare("INSERT into processos(tipo, situacao, data_i, id_cliente, acompanhante)value(:tipo, 'andamento', :datai, :id, :acompanhante)");
             $sql->bindValue(":tipo", $tipo);
             $sql->bindValue(":datai", $datai);
             $sql->bindValue(":id", $id);
+            $sql->bindValue(":acompanhante", $acompanhante);
             $sql->execute();
         }
         
@@ -44,7 +46,7 @@ class Processos extends model
                 $query[] = "processos.data_f = :dataf";
             }
 
-            $sql = $this->db->prepare("SELECT processos.id_processo, clientes.nome, clientes.cpf, processos.tipo, processos.situacao, processos.data_i, processos.data_f, processos.situacao, processos.pagamento FROM clientes, processos where " . implode(' AND ', $query) . " AND clientes.id_cliente = processos.id_cliente ORDER BY clientes.nome asc limit $pa, 8");
+            $sql = $this->db->prepare("SELECT processos.id_processo, clientes.nome, clientes.cpf, processos.tipo, processos.situacao, processos.data_i, processos.data_f, processos.situacao, processos.pagamento FROM clientes, processos where " . implode(' AND ', $query) . " AND clientes.id_cliente = processos.id_cliente ORDER BY processos.data_i asc limit $pa, 8");
 
             if ($dados[0] != "1=1") {
                 $sql->bindValue(":nome", "%$dados[0]%");
@@ -127,7 +129,7 @@ class Processos extends model
         }
     }
 
-    public function atualizarProcesso($id, $pagamento, $situacao, $obs)
+    public function atualizarProcesso($id, $pagamento, $situacao, $pericia, $rpv, $obs)
     {
 
         $query = array();
@@ -139,6 +141,12 @@ class Processos extends model
         }
         if (!empty($obs) && isset($obs)) {
             $query[] = "processos.obs = :obs";
+        }
+        if (!empty($pericia) && isset($pericia)) {
+            $query[] = "processos.pericia = :pericia";
+        }
+        if (!empty($rpv) && isset($rpv)) {
+            $query[] = "processos.rpv = :rpv";
         }
 
 
@@ -153,6 +161,12 @@ class Processos extends model
         }
         if (!empty($obs) && isset($obs)) {
             $sql->bindValue(":obs", $obs);
+        }
+        if (!empty($pericia) && isset($pericia)) {
+            $sql->bindValue(":pericia", $pericia);
+        }
+        if (!empty($rpv) && isset($rpv)) {
+            $sql->bindValue(":rpv", $rpv);
         }
 
         $sql->execute();
